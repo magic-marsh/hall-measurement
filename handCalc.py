@@ -40,3 +40,8 @@ resistivity = 6.2744e-03
 hall_coefficient = -1.1037e+00
 mobility = hall_coefficient / resistivity
 print("Mobility:", mobility)  #checked
+
+# Sheet Resistivity
+lo = 6.2744e-03
+sheet_resistivity = lo / (1 / D)
+print("Sheet Resistivity:", sheet_resistivity)
