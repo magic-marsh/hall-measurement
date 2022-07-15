@@ -1,9 +1,10 @@
 # やることリスト
-- Bulk ConcentrationとSheet Concentrationの意味と違い
-- Sheet Concentrationの意味
-- Sheet Resistanceの導出
+- Sheet Resisitanceの導出
+  - 後回し
 - Magneto Resistanceの導出
+  - 後回し
 - Ratio of Vertical/Horizontalの導出と意味
+  - 不明で処理する
 - Hall Coefficientの導出
   - 実験データの一回を抽出して検証しなおす
 - Resistivityの導出
