@@ -1,47 +1,54 @@
 #parameter
-I = 0.005
+I = 5.00E-03
 B = 0.5
 D = 0.000005
-AB = -22.7475
-ABm = 22.5675
-BC = -7.7614
-BCm = 7.7097
-CD = -22.5549
-CDm = 22.7607
-DA = -7.6959
-DAm = 7.7711
-MAC11 = -15.5882
-MAC12 = 15.3537
-MAC21 = -14.4794
-MAC22 = 14.2572
-MBD11 = -14.2976
-MBD12 = 14.4251
-MBD21 = -15.4021
-MBD22 = 15.5302
-q = 1.602e-19
+D = 5
+AB = -7.78E+00
+ABm = 7.82E+00
+BC = -2.28E+01
+BCm = 2.28E+01
+CD = -7.78E+00
+CDm = 7.81E+00
+DA = -2.28E+01
+DAm = 2.28E+01
+MAC11 = 1.44E+01
+MAC12 = -1.44E+01
+MAC21 = 1.55E+01
+MAC22 = -1.55E+01
+MBD11 = 1.56E+01
+MBD12 = -1.55E+01
+MBD21 = 1.44E+01
+MBD22 = -1.44E+01
 
-# Concentration
-HallCo = -3.1570e-03
-#Ns = (I * B) / (q * MAC)
-#print(Ns)
-Nb = 1 / (q * HallCo)
-#print(Nb)
-Ns = Nb * D
-#print(Ns)
-VH = (I * B)/(q * Nb * D)
-#print(VH)
+q = 1.602E-19
+
+# expected value
+bulk_concentration = -5.56E+18
+sheet_concentration = -2.78E+15
+sheet_resistivity = 1.26E+01
+resistivity = 6.32E-03
+conductivity = 1.58E+02
+magneto_ratio = 1.12E-01
+mobility = 1.78E+02
+average_hall_coeffecient = -1.12E+00
+AC_hall_coeffecient = -1.12E+00
+BD_hall_coeffecient = -1.12E+00
+ratio_vh = 3.42E-01
+"""
+# calculate
+bc = 1/(q*average_hall_coeffecient)
+rh = 1/(q*bc)
+vh = rh*(I*B)/D
+ns1 = (I*B)/(q*vh)
+ns2 = bc * D
+print(ns1,ns2)
+print(bc,rh,vh)
+print(resistivity/D)
+"""
 
 # Hall Coefficient
-BDAC = D * (MBD12 - MBD11 + MBD21 - MBD22) / (B * I)
-print("BD Hall Coefficent:", BDAC) #unmatch
-
-# Mobility
-resistivity = 6.2744e-03
-hall_coefficient = -1.1037e+00
-mobility = hall_coefficient / resistivity
-print("Mobility:", mobility)  #checked
-
-# Sheet Resistivity
-lo = 6.2744e-03
-sheet_resistivity = lo / (1 / D)
-print("Sheet Resistivity:", sheet_resistivity)
+BDHC = D * (MBD12 - MBD11 + MBD21 - MBD22) / (B * I)
+print("BD Hall Coefficent:", BDHC, "expected:",BD_hall_coeffecient) #unmatch
+print(D/(I*B)*MBD11)
+vh = BD_hall_coeffecient*(I*B)/D
+print("VH:",vh)
