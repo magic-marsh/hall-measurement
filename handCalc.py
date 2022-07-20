@@ -2,7 +2,7 @@
 I = 5.00E-03
 B = 0.5
 D = 0.000005
-D = 5
+D = 0.0005
 AB = -7.78E+00
 ABm = 7.82E+00
 BC = -2.28E+01
@@ -34,6 +34,7 @@ average_hall_coeffecient = -1.12E+00
 AC_hall_coeffecient = -1.12E+00
 BD_hall_coeffecient = -1.12E+00
 ratio_vh = 3.42E-01
+
 """
 # calculate
 bc = 1/(q*average_hall_coeffecient)
@@ -45,10 +46,21 @@ print(ns1,ns2)
 print(bc,rh,vh)
 print(resistivity/D)
 """
-
 # Hall Coefficient
-BDHC = D * (MBD12 - MBD11 + MBD21 - MBD22) / (B * I)
+BDHC = D * (MBD11 - MBD12 + MBD22 - MBD21) / (B * I)
 print("BD Hall Coefficent:", BDHC, "expected:",BD_hall_coeffecient) #unmatch
 print(D/(I*B)*MBD11)
 vh = BD_hall_coeffecient*(I*B)/D
 print("VH:",vh)
+
+a = MAC11 - MAC12
+b = MAC22 - MAC21
+c = B * I
+d = -0.5 * D
+e = d /c
+print(a,b,a+b,c,d,e)
+
+h = AC_hall_coeffecient * c
+i = h /D
+j = i * D / c
+print(resistivity/D)
